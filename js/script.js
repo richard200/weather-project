@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 weather;
 
+let lat;
+let long;
+
+if (navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(position => {
+        long = position.coords.longitude
+        lat = position.coords.latitude
+    })
+}
+
 });
 
 let weather = {
@@ -27,20 +37,31 @@ let weather = {
         document.querySelector('.wind').textContent = "Wind Speed " + speed + "km/h"
     },
 
+
+
     search: function(){
-        this.fetchWeather(document.querySelector(".search").value)
+        this.fetchWeather(document.querySelector(".barsearch").value)
     }
 
 
    
   }
 
-//   function searchPlace(){
-//    this.fetchWeather(document.querySelector(".search1").value)
-        
-// }
 
-  document.querySelector(".search1").addEventListener('click', () => {
+
+  document.querySelector(".search button")
+  .addEventListener('click', () => {
     weather.search()
+
+  })
+
+  document.querySelector(".barsearch")
+  .addEventListener('keyup', (event) => {
+    if(event.key == "Enter"){
+        weather.search()
+
+    }
+
+    
 
   })
