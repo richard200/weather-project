@@ -5,12 +5,6 @@ weather;
 let lat;
 let long;
 
-if (navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(position => {
-        long = position.coords.longitude
-        lat = position.coords.latitude
-    })
-}
 
 });
 
@@ -35,6 +29,8 @@ let weather = {
         document.querySelector('.temp').textContent = temp + "°C";
         document.querySelector('.humidity').textContent = "Humidity " + humidity + "%";
         document.querySelector('.wind').textContent = "Wind Speed " + speed + "km/h"
+        
+        document.querySelector(".weather").classList.remove("loading")
     },
 
 
@@ -48,6 +44,7 @@ let weather = {
   }
 
 
+ 
 
   document.querySelector(".search button")
   .addEventListener('click', () => {
@@ -65,3 +62,12 @@ let weather = {
     
 
   })
+
+  weather.fetchWeather("Nairobi")
+//   if (navigator.geolocation){
+//     navigator.geolocation.getCurrentPosition(position => {
+//         long = position.coords.longitude
+//         lat = position.coords.latitude
+//     })
+// }
+  
