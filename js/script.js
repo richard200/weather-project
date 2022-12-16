@@ -44,17 +44,25 @@ let weather = {
   }
 
 
- 
 
   document.querySelector(".search button")
   .addEventListener('click', () => {
+    
     weather.search()
+    // if(event.key === ""){
+    //     alert("Please search something")
+    // }else{
+    //     weather.search()
+
+    // }
+   
 
   })
 
   document.querySelector(".barsearch")
   .addEventListener('keyup', (event) => {
     if(event.key == "Enter"){
+        // document.querySelector(".weather").classList.remove("loading")
         weather.search()
 
     }
